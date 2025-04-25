@@ -8,46 +8,46 @@
 	<input [(ngModel)]="searchText" (keydown.enter)="search()" placeholder="Search...">
 	<ion-button (click)="search()">search</ion-button>
 
-	<h1>{{entry?.word}}</h1>
+	<h1 class="wordTitle">{{entry?.word}}</h1>
 
 	<p>Click on a definition to copy it</p>
 
+	<!-- phonetics list -->
 	<div *ngFor="let phonetics of entry?.phonetics">
 		<p *ngIf="phonetics.text !== ''">{{phonetics.text}}</p>
 		<ion-button *ngIf="phonetics.audio !== ''" (click)="playSound(phonetics.audio)">play</ion-button>
 	</div>
 
+	<!-- meanings list -->
 	<div *ngFor="let meaning of entry?.meanings">
-		<p>{{meaning.partOfSpeech}}</p>
+		<p class="partOfSpeech">{{meaning.partOfSpeech}}</p>
 
 		<div class="container">
-			<p *ngIf="meaning.synonyms.length != 0">Synonyms:
-				<ng-container *ngFor="let word of meaning.synonyms">
-				{{word}}, 
-				</ng-container>
+
+			<!-- synonyms and antonyms for current meaning -->
+			<p *ngIf="meaning.synonyms.length != 0" class="synonymsList">
+				<b>Synonyms: </b>
+				<ng-container *ngFor="let word of meaning.synonyms">{{word}}, </ng-container>
 			</p>
-			<p *ngIf="meaning.antonyms.length != 0">Antonyms:
-				<ng-container *ngFor="let word of meaning.antonyms">
-				{{word}}, 
-				</ng-container>
+			<p *ngIf="meaning.antonyms.length != 0" class="synonymsList">
+				<b>Antonyms: </b>
+				<ng-container *ngFor="let word of meaning.antonyms">{{word}}, </ng-container>
 			</p>
 
+			<!-- definitions list -->
 			<div *ngFor="let definition of meaning.definitions" class="container">
-				<p>
-					<ion-text (click)="copy(definition.definition)">{{definition.definition}}</ion-text>
-					<br>
-					{{definition.example}}
-				</p>
+				<ion-text (click)="copy(definition.definition)" class="definition">{{definition.definition}}</ion-text>
+				<br>
+				<p class="example">{{definition.example}}</p>
 
-				<p *ngIf="definition.synonyms.length != 0">Synonyms:
-					<ng-container *ngFor="let word of definition.synonyms">
-					{{word}}, 
-					</ng-container>
+				<!-- synonyms and antonyms for current definition -->
+				<p *ngIf="definition.synonyms.length != 0" class="synonymsList">
+					<b>Synonyms: </b>
+					<ng-container *ngFor="let word of definition.synonyms">{{word}}, </ng-container>
 				</p>
-				<p *ngIf="definition.antonyms.length != 0">Antonyms:
-					<ng-container *ngFor="let word of definition.antonyms">
-					{{word}}, 
-					</ng-container>
+				<p *ngIf="definition.antonyms.length != 0" class="synonymsList">
+					<b>Antonyms: </b>
+					<ng-container *ngFor="let word of definition.antonyms">{{word}}, </ng-container>
 				</p>
 			</div>
 		</div>
