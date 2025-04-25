@@ -26,18 +26,45 @@ export class DictionaryPage implements OnInit
 
 	ngOnInit()
 	{
-		const word: string | null = this.route.snapshot.paramMap.get('word');
-		if (word !== null)
+		this.initEntry();
+	}
+
+	async initEntry()
+	{
+		let word: string | null | undefined = this.route.snapshot.paramMap.get('word');
+
+		const random: boolean = word === "random-word";
+		if (random)
+			word = await this.http.get<string>("https://random-word-api.herokuapp.com/word").toPromise();
+
+		if (word !== null && word !== undefined)
 		{
-			this.http.get<DictionaryEntry[]>("https://api.dictionaryapi.dev/api/v2/entries/en/" + word).subscribe(res =>
-			{
-				if (res.length != 0)
+			this.http.get<DictionaryEntry[]>("https://api.dictionaryapi.dev/api/v2/entries/en/" + word).subscribe({
+				next: res =>
 				{
+					if (res.length == 0)
+					{
+						this.navigateToError();
+						return;
+					}
+
 					this.entry = res[0];
 					this.history.addEntry(word);
-				}
+				},
+				error: res =>
+				{
+					if (random)
+						this.initEntry();
+					else
+						this.navigateToError();
+				},
 			});
 		}
+	}
+
+	navigateToError()
+	{
+		this.router.navigateByUrl("/dictionary/error", { replaceUrl: true });
 	}
 
 	search()

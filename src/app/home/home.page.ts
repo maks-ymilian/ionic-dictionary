@@ -20,6 +20,11 @@ export class HomePage
 		this.router.navigate(['/dictionary', this.inputText]);
 	}
 
+	randomWord()
+	{
+		this.router.navigate(['/dictionary/random-word']);
+	}
+
 	goToHistory()
 	{
 		this.router.navigate(['/history']);
