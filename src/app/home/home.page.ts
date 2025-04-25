@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class HomePage
 {
-	searchText: string = "input";
+	searchText: string = "";
 
 	constructor(private router: Router) {}
 

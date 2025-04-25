@@ -14,7 +14,7 @@
   </ion-header>
 
   <div id="container">
-	<input [(ngModel)]="searchText">
+	<input [(ngModel)]="searchText" (keydown.enter)="search()">
 	<ion-button (click)="search()">search</ion-button>
 	<ion-button (click)="goToHistory()">history</ion-button>
 	<ion-button (click)="randomWord()">I'm feeling lucky</ion-button>

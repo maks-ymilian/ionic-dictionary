@@ -11,7 +11,7 @@
 		</ion-toolbar>
 	</ion-header>
 
-	<input [(ngModel)]="searchText">
+	<input [(ngModel)]="searchText" (keydown.enter)="search()">
 	<ion-button (click)="search()">search</ion-button>
 
 	<h1>{{entry?.word}}</h1>
