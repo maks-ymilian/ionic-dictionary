@@ -11,13 +11,13 @@ import { FormsModule } from '@angular/forms';
 })
 export class HomePage
 {
-	inputText: string = "input";
+	searchText: string = "input";
 
 	constructor(private router: Router) {}
 
-	goToNextPage()
+	search()
 	{
-		this.router.navigate(['/dictionary', this.inputText]);
+		this.router.navigate(['/dictionary', this.searchText]);
 	}
 
 	randomWord()

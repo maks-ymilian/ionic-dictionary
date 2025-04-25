@@ -16,6 +16,11 @@
 
 	<h1>{{entry?.word}}</h1>
 
+	<div *ngFor="let phonetics of entry?.phonetics">
+		<p *ngIf="phonetics.text !== ''">{{phonetics.text}}</p>
+		<ion-button *ngIf="phonetics.audio !== ''" (click)="playSound(phonetics.audio)">play</ion-button>
+	</div>
+
 	<div *ngFor="let meaning of entry?.meanings">
 		<p>{{meaning.partOfSpeech}}</p>
 

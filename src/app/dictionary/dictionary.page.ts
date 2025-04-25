@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { HistoryService } from '../history.service'
 import { Clipboard } from '@capacitor/clipboard';
 import { Toast } from '@capacitor/toast';
+import { NativeAudio } from '@capacitor-community/native-audio'
 
 @Component({
 	selector: 'app-dictionary',
@@ -76,5 +77,18 @@ export class DictionaryPage implements OnInit
 	{
 		Clipboard.write({ string: string });
 		Toast.show({ text: "Copied definition to clipboard" });
+	}
+
+	playSound(url: string)
+	{
+		NativeAudio.preload({
+			assetId: "speech",
+			assetPath: url,
+			audioChannelNum: 1,
+			isUrl: true,
+		});
+
+		NativeAudio.play({ assetId: 'speech' });
+		NativeAudio.unload({ assetId: 'speech' });
 	}
 }
