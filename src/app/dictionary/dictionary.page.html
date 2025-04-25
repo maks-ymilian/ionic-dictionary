@@ -1,40 +1,50 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>dictionary</ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-title>dictionary</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">dictionary</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <p>Word: {{entry?.word}}</p>
+	<ion-header collapse="condense">
+		<ion-toolbar>
+			<ion-title size="large">dictionary</ion-title>
+		</ion-toolbar>
+	</ion-header>
+	<h1>{{entry?.word}}</h1>
 
-  <p>1 Phonetic</p>
-  <p>Text: </p>
-  <p>Audio: </p>
+	<div *ngFor="let meaning of entry?.meanings">
+		<p>{{meaning.partOfSpeech}}</p>
 
-  <p>Meanings</p>
-  <p>Synonyms: </p>
-  <p>Antonyms: </p>
-  <p>Part of speech: </p>
-  <p>Definition: </p>
-  <p>Synonyms: </p>
-  <p>Antonyms: </p>
+		<div class="container">
+			<p *ngIf="meaning.synonyms.length != 0">Synonyms:
+				<ng-container *ngFor="let word of meaning.synonyms">
+				{{word}}, 
+				</ng-container>
+			</p>
+			<p *ngIf="meaning.antonyms.length != 0">Antonyms:
+				<ng-container *ngFor="let word of meaning.antonyms">
+				{{word}}, 
+				</ng-container>
+			</p>
 
-  <p>Synonyms: </p>
-  <p>Antonyms: </p>
-  <p>Part of speech: </p>
-  <p>Definition: </p>
-  <p>Synonyms: </p>
-  <p>Antonyms: </p>
+			<div *ngFor="let definition of meaning.definitions" class="container">
+				<p>
+					{{definition.definition}}
+					<br>
+					{{definition.example}}
+				</p>
 
-  <p>Synonyms: </p>
-  <p>Antonyms: </p>
-  <p>Part of speech: </p>
-  <p>Definition: </p>
-  <p>Synonyms: </p>
-  <p>Antonyms: </p>
+				<p *ngIf="definition.synonyms.length != 0">Synonyms:
+					<ng-container *ngFor="let word of definition.synonyms">
+					{{word}}, 
+					</ng-container>
+				</p>
+				<p *ngIf="definition.antonyms.length != 0">Antonyms:
+					<ng-container *ngFor="let word of definition.antonyms">
+					{{word}}, 
+					</ng-container>
+				</p>
+			</div>
+		</div>
+	</div>
 </ion-content>
