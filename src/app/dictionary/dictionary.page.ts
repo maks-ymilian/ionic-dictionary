@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { HistoryService } from '../history.service'
 import { Clipboard } from '@capacitor/clipboard';
+import { Toast } from '@capacitor/toast';
 
 @Component({
 	selector: 'app-dictionary',
@@ -47,5 +48,6 @@ export class DictionaryPage implements OnInit
 	copy(string: string)
 	{
 		Clipboard.write({ string: string });
+		Toast.show({ text: "Copied definition to clipboard" });
 	}
 }

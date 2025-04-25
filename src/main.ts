@@ -6,6 +6,11 @@ import { AppComponent } from './app/app.component';
 import { provideHttpClient } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+
+defineCustomElements(window);
+// if (environment.production)
+// 	enableProdMode();
 
 bootstrapApplication(AppComponent, {
 	providers: [
