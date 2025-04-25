@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { OtherPagePage } from './other-page.page';
+import { DictionaryPage } from './dictionary.page';
 
-describe('OtherPagePage', () => {
-  let component: OtherPagePage;
-  let fixture: ComponentFixture<OtherPagePage>;
+describe('DictionaryPage', () => {
+  let component: DictionaryPage;
+  let fixture: ComponentFixture<DictionaryPage>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OtherPagePage);
+    fixture = TestBed.createComponent(DictionaryPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

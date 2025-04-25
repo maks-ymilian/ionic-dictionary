@@ -11,7 +11,11 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'other-page',
-    loadComponent: () => import('./other-page/other-page.page').then( m => m.OtherPagePage)
+    path: 'dictionary',
+    loadComponent: () => import('./dictionary/dictionary.page').then( m => m.DictionaryPage)
+  },
+  {
+    path: 'history',
+    loadComponent: () => import('./history/history.page').then( m => m.HistoryPage)
   },
 ];
