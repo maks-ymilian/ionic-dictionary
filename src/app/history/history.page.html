@@ -10,4 +10,6 @@
       <ion-title size="large">history</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-button (click)="clear()">clear</ion-button>
+  <p *ngFor="let entry of history.getEntries() | async">{{entry}}</p>
 </ion-content>
