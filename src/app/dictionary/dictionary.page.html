@@ -33,7 +33,7 @@
 
 			<div *ngFor="let definition of meaning.definitions" class="container">
 				<p>
-					{{definition.definition}}
+					<ion-text (click)="copy(definition.definition)">{{definition.definition}}</ion-text>
 					<br>
 					{{definition.example}}
 				</p>

@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton} from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonText } from '@ionic/angular/standalone';
 import { HttpClient } from '@angular/common/http';
 import { DictionaryEntry } from '../dictionary-types';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { HistoryService } from '../history.service'
+import { Clipboard } from '@capacitor/clipboard';
 
 @Component({
 	selector: 'app-dictionary',
 	templateUrl: './dictionary.page.html',
 	styleUrls: ['./dictionary.page.scss'],
 	standalone: true,
-	imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonButton, CommonModule, FormsModule]
+	imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonButton, CommonModule, FormsModule, IonText]
 })
 export class DictionaryPage implements OnInit
 {
@@ -41,5 +42,10 @@ export class DictionaryPage implements OnInit
 	search()
 	{
 		this.router.navigateByUrl(`/dictionary/${this.searchText}`, { replaceUrl: true });
+	}
+
+	copy(string: string)
+	{
+		Clipboard.write({ string: string });
 	}
 }
