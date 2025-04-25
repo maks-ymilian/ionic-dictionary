@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Dictionary
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +14,7 @@
   </ion-header>
 
   <div id="container">
-	<input [(ngModel)]="searchText" (keydown.enter)="search()">
+	<input [(ngModel)]="searchText" (keydown.enter)="search()" placeholder="Search...">
 	<ion-button (click)="search()">search</ion-button>
 	<ion-button (click)="goToHistory()">history</ion-button>
 	<ion-button (click)="randomWord()">I'm feeling lucky</ion-button>
