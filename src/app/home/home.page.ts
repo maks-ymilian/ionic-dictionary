@@ -12,12 +12,16 @@ import { FormsModule } from '@angular/forms';
 export class HomePage
 {
 	inputText: string = "input";
-	result: string = "result";
 
 	constructor(private router: Router) {}
 
 	goToNextPage()
 	{
 		this.router.navigate(['/dictionary', this.inputText]);
+	}
+
+	goToHistory()
+	{
+		this.router.navigate(['/history']);
 	}
 }
