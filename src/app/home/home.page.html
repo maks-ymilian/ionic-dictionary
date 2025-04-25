@@ -16,7 +16,9 @@
   <div id="container">
 	<input [(ngModel)]="searchText" (keydown.enter)="search()" placeholder="Search...">
 	<ion-button (click)="search()">search</ion-button>
+	<br>
 	<ion-button (click)="goToHistory()">history</ion-button>
+	<br>
 	<ion-button (click)="randomWord()">I'm feeling lucky</ion-button>
   </div>
 </ion-content>
