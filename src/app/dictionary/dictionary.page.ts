@@ -35,7 +35,7 @@ export class DictionaryPage implements OnInit
 
 		const random: boolean = word === "random-word";
 		if (random)
-			word = await this.http.get<string>("https://random-word-api.herokuapp.com/word").toPromise();
+			word = await this.http.get<string>("https://random-word-api.vercel.app/api?words=1").toPromise();
 
 		if (word !== null && word !== undefined)
 		{
