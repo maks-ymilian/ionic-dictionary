@@ -11,7 +11,7 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'dictionary',
+    path: 'dictionary/:word',
     loadComponent: () => import('./dictionary/dictionary.page').then( m => m.DictionaryPage)
   },
   {
