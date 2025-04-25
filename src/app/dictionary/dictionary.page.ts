@@ -34,6 +34,7 @@ export class DictionaryPage implements OnInit
 	{
 		let word: string | null | undefined = this.route.snapshot.paramMap.get('word');
 
+		// if the url is random-word set word to a random word from an api
 		const random: boolean = word === "random-word";
 		if (random)
 			word = await this.http.get<string>("https://random-word-api.vercel.app/api?words=1").toPromise();
@@ -54,7 +55,7 @@ export class DictionaryPage implements OnInit
 				},
 				error: res =>
 				{
-					if (random)
+					if (random) // if random word doesnt exist in dictionary, try again
 						this.initEntry();
 					else
 						this.navigateToError();

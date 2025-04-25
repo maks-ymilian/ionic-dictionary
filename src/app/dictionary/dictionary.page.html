@@ -10,6 +10,8 @@
 
 	<h1>{{entry?.word}}</h1>
 
+	<p>Click on a definition to copy it</p>
+
 	<div *ngFor="let phonetics of entry?.phonetics">
 		<p *ngIf="phonetics.text !== ''">{{phonetics.text}}</p>
 		<ion-button *ngIf="phonetics.audio !== ''" (click)="playSound(phonetics.audio)">play</ion-button>

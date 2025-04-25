@@ -10,6 +10,14 @@
       <ion-title size="large">history</ion-title>
     </ion-toolbar>
   </ion-header>
+  
+  <p>Click on a word to go to that word</p>
+
   <ion-button (click)="clear()">clear</ion-button>
-  <p *ngFor="let entry of history.getEntries() | async">{{entry}}</p>
+
+  <div *ngFor="let entry of history.getEntries() | async">
+	  <ion-text (click)="navigateToWord(entry)">{{entry}}</ion-text>
+	  <br>
+	  <br>
+  </div>
 </ion-content>
