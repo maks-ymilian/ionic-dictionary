@@ -17,5 +17,8 @@
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
 	<ion-button (click)="goToNextPage()">go to next page</ion-button>
+	<input [(ngModel)]="inputText">
+	<ion-button (click)="submit()">submit</ion-button>
+	<p>{{result}}</p>
   </div>
 </ion-content>
